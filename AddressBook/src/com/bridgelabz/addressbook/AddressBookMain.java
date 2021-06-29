@@ -8,7 +8,7 @@ public class AddressBookMain {
 		
 		Scanner scanner = new Scanner(System.in);
 	
-		AddressBookItf contact = new AddressBookItf();
+		AddressBookService contact = new AddressBookService();
 		
 		while (true) {
 			System.out.println("Please choose from below choices .");

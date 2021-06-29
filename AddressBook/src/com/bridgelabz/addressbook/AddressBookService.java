@@ -2,7 +2,7 @@ package com.bridgelabz.addressbook;
 
 import java.util.Scanner;
 
-public class AddressBookItf {
+public class AddressBookService {
 
 	private int index = 0;
 	Contact[] contacts = new Contact[20];
