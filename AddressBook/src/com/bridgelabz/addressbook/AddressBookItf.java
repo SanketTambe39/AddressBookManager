@@ -64,6 +64,24 @@ public class AddressBookItf {
 		}
 		return false;
 	}
+	
+	public boolean deleteContact(String email) {
+
+		for (int i = 0; i < contacts.length; i++) 
+		{
+			if(contacts[i] != null && contacts[i].getEmail().equalsIgnoreCase(email) )
+			{ 
+				for (int j=i; j < contacts.length-2 ; j++)
+				{					
+					contacts[j] = contacts[j+1];
+				}
+				return true;
+			}
+
+		}
+		return false;
+	}
+
 
 	
 	public void diaplayContacts() {

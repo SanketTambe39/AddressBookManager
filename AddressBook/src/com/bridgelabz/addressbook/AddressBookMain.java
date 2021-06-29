@@ -14,8 +14,9 @@ public class AddressBookMain {
 			System.out.println("Please choose from below choices .");
 			System.out.println(" 1 Add Contact "
 					+ "\n 2 Edit Contact "
-					+ "\n 3 Display Contact "
-					+ "\n 4 Quit ");
+					+"\n 3 Delete Contact "
+					+ "\n 4 Display Contact "
+					+ "\n 5 Quit ");
 			int userChoice = scanner.nextInt();
 			switch (userChoice) 
 			{
@@ -39,7 +40,20 @@ public class AddressBookMain {
 						System.out.println("Contact not found");
 					}
 					break;
-				case 3:	
+				case 3:
+					System.out.println("Enter the Email Address");
+					String emailToDelete = scanner.next();
+					 boolean status = contact.deleteContact(emailToDelete);
+					 if(status)
+						{
+							System.out.println("Contact Deleted Successfully");
+						}
+						else
+						{
+							System.out.println("Contact not found");
+						}
+					 break;
+				case 4:	
 					contact.diaplayContacts();
 					break;
 				default:
