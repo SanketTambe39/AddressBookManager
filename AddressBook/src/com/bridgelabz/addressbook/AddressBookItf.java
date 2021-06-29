@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class AddressBookItf {
 
 	private int index = 0;
-	Contact[] contacts = new Contact[7];
-	public Contact addContact()
+	Contact[] contacts = new Contact[20];
+	Scanner scanner = new Scanner(System.in);
+	public void addContact()
 	{
-		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter First Name");
 		String firstName = scanner.next();
 		
@@ -31,8 +31,40 @@ public class AddressBookItf {
 		String email = scanner.next();
 		Contact contact = new Contact( firstName, lastName, city, state, zip, phoneNumber, email);
 		contacts[index++]= contact;
-		return contact;
 	}
+	
+	public boolean editContact(String email)
+	{
+		for (int i = 0; i < contacts.length; i++) 
+		{
+			if(contacts[i] != null && contacts[i].getEmail().equalsIgnoreCase(email)) 
+			{
+				System.out.println("Enter First Name");
+				String firstName = scanner.next();
+				
+				System.out.println("Enter last Name");
+				String lastName = scanner.next();
+			
+				System.out.println("Enter City");
+				String city = scanner.next();
+				
+				System.out.println("Enter State");
+				String state = scanner.next();
+				
+				System.out.println("Enter zip");
+				String zip = scanner.next();
+				
+				contacts[i].setFirstname(firstName);
+				contacts[i].setLastname(lastName);
+				contacts[i].setCity(city);
+				contacts[i].setState(state);
+				contacts[i].setState(zip);
+				return true;
+			}
+		}
+		return false;
+	}
+
 	
 	public void diaplayContacts() {
 		for (int i = 0; i < contacts.length; i++) {
