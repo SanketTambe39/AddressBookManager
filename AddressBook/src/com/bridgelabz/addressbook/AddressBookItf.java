@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class AddressBookItf {
 
 	private int index = 0;
-	Contact[] contacts;
+	Contact[] contacts = new Contact[20];
 	Scanner scanner = new Scanner(System.in);
 	public void addContact()
 	{
