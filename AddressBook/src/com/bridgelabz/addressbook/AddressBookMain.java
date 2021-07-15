@@ -28,9 +28,9 @@ public class AddressBookMain {
 					}			
 					break;
 				case 2:
-					System.out.println("Enter the Email");
-					String email = scanner.next();
-					boolean updated = contact.editContact(email);	
+					System.out.println("Enter the Phone Number");
+					String phoneNumber = scanner.next();
+					boolean updated = contact.editContact(phoneNumber);	
 					if(updated)
 					{
 						System.out.println("Contact Updated.");
@@ -41,9 +41,9 @@ public class AddressBookMain {
 					}
 					break;
 				case 3:
-					System.out.println("Enter the Email Address");
-					String emailToDelete = scanner.next();
-					 boolean status = contact.deleteContact(emailToDelete);
+					System.out.println("Enter the Phone Number");
+					String phoneNumberToDel = scanner.next();
+					 boolean status = contact.deleteContact(phoneNumberToDel);
 					 if(status)
 						{
 							System.out.println("Contact Deleted Successfully");
@@ -54,14 +54,12 @@ public class AddressBookMain {
 						}
 					 break;
 				case 4:	
-					contact.diaplayContacts();
+					contact.displayContacts();
 					break;
 				default:
 					System.out.println("You just Quit");
 					System.exit(0);
 			}
-			
 		}
 	}
-
 }
