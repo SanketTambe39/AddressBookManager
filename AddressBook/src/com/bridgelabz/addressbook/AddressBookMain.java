@@ -17,8 +17,9 @@ public class AddressBookMain {
 					+"\n 3 Delete Contact "
 					+ "\n 4 Display Contact "
 					+ "\n 5 Search "
-					+ "\n 6 View Person"
-					+ "\n 7 Quit ");
+					+ "\n 6 View Person from same state or city"
+					+ "\n 7 No of person from same state or city"
+					+ "\n 8 Quit ");
 			int userChoice = scanner.nextInt();
 			switch (userChoice) 
 			{
