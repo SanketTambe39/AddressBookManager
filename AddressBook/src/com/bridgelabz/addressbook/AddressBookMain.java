@@ -21,11 +21,7 @@ public class AddressBookMain {
 			switch (userChoice) 
 			{
 				case 1:
-					System.out.println("Enter How many numbers You want to Add ::");
-					int size = scanner.nextInt();
-					for (int i = 0; i < size; i++) {
-						contact.addContact();
-					}			
+					contact.addContact();	
 					break;
 				case 2:
 					System.out.println("Enter the Phone Number");

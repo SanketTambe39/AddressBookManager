@@ -119,5 +119,29 @@ public class AddressBookService {
 		}
 		return status;
 	}
+	
+	//check Duplicate using name
+		private void addContactToExsistingBook(Contact contact, String bookName, LinkedList<Contact> contactList)
+		{
+			boolean isAlreadyExsist = false;
+			for (Contact searchContact : contactList) 
+			{
+				if (searchContact.getFirstname().equals(contact.getFirstname()))
+				{
+					isAlreadyExsist = true;
+					break;
+				}
+			}
+			if( !(isAlreadyExsist) )
+			{
+				contactList.add(contact);				
+				addressBooks.put(bookName, contactList);
+				System.out.println("New Contact Added Sucessfully");
+			}
+			else
+			{
+				System.out.println("Contact already exsist");
+			}
+		}
 
 }
