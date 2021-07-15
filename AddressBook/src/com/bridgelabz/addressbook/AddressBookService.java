@@ -145,16 +145,18 @@ public class AddressBookService {
 	}
 
 	// method to search multiple person in city and state
-	public void searchPerson(String searchKey) {
+	public int searchPerson(String searchKey) {
+		int count = 0;
 		for (String bookName : addressBooks.keySet()) {
 			LinkedList<Contact> contactList = addressBooks.get(bookName);
 			for (Contact contact : contactList) {
 				if (contact.getCity().equals(searchKey) || contact.getState().equals(searchKey)) {
 					System.out.println(contact.getFirstname() + "" + contact.getLastname());
-
+					count++;
 				}
 			}
 		}
+		return count;
 	}
 
 	// method to view person in address book

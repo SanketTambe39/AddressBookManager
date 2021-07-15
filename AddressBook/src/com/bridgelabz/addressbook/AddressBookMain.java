@@ -64,6 +64,12 @@ public class AddressBookMain {
 					String viewKey = scanner.next();
 					contact.viewPerson(viewKey);
 					break;
+				case 7:
+					System.out.println("Enter the city or state which to be searched");
+					String searchKeyForCount = scanner.next();
+					int count = (int)contact.searchPerson(searchKeyForCount);
+					System.out.println("Total Contacts are : "+count+ " in "+ searchKeyForCount);
+					break;
 				default:
 					System.out.println("You just Quit");
 					System.exit(0);
