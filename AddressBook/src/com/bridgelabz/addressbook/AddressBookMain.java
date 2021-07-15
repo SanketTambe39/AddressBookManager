@@ -58,6 +58,11 @@ public class AddressBookMain {
 					String searchKey = scanner.next();
 					contact.searchPerson(searchKey);
 					break;
+				case 6:
+					System.out.println("Enter the city or state which to be searched");
+					String viewKey = scanner.next();
+					contact.viewPerson(viewKey);
+					break;
 				default:
 					System.out.println("You just Quit");
 					System.exit(0);
