@@ -17,7 +17,8 @@ public class AddressBookMain {
 					+"\n 3 Delete Contact "
 					+ "\n 4 Display Contact "
 					+ "\n 5 Search "
-					+ "\n 6 Quit ");
+					+ "\n 6 View Person"
+					+ "\n 7 Quit ");
 			int userChoice = scanner.nextInt();
 			switch (userChoice) 
 			{
@@ -51,7 +52,7 @@ public class AddressBookMain {
 						}
 					 break;
 				case 4:	
-					contact.displayContacts();
+					contact.displayContact();
 					break;
 				case 5:
 					System.out.println("Enter the city or state which to be searched");

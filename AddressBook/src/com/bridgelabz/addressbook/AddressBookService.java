@@ -36,9 +36,7 @@ public class AddressBookService {
 		if (addressBooks.containsKey(bookName)) {
 			// if exist then add contact to list
 			LinkedList<Contact> contactList = addressBooks.get(bookName);
-			contactList.add(contact);
-			addressBooks.put(bookName, contactList);
-			System.out.println("New Contact Added Sucessfully");
+			addContactToExsistingBook(contact, bookName, contactList);
 		} else {
 			// creating a new book and list
 			allContacts.add(contact);
@@ -99,9 +97,17 @@ public class AddressBookService {
 	/**
 	 * Method to Display the Contact Details
 	 */
-	public void displayContacts() {
-		for (Contact contact : allContacts) {
+	public void displayContacts(LinkedList<Contact> contactList) {
+		for (Contact contact : contactList) {
 			System.out.println(contact);
+		}
+	}
+
+	public void displayContact() {
+		for (String bookName : addressBooks.keySet()) {
+			System.out.println(bookName);
+			LinkedList<Contact> contactList = addressBooks.get(bookName);
+			displayContacts(contactList);
 		}
 	}
 
@@ -119,62 +125,47 @@ public class AddressBookService {
 		}
 		return status;
 	}
-	
-	//check Duplicate using name
-		private void addContactToExsistingBook(Contact contact, String bookName, LinkedList<Contact> contactList)
-		{
-			boolean isAlreadyExsist = false;
-			for (Contact searchContact : contactList) 
-			{
-				if (searchContact.getFirstname().equals(contact.getFirstname()))
-				{
-					isAlreadyExsist = true;
-					break;
-				}
-			}
-			if( !(isAlreadyExsist) )
-			{
-				contactList.add(contact);				
-				addressBooks.put(bookName, contactList);
-				System.out.println("New Contact Added Sucessfully");
-			}
-			else
-			{
-				System.out.println("Contact already exsist");
+
+	// check Duplicate using name
+	private void addContactToExsistingBook(Contact contact, String bookName, LinkedList<Contact> contactList) {
+		boolean isAlreadyExsist = false;
+		for (Contact searchContact : contactList) {
+			if (searchContact.getFirstname().equals(contact.getFirstname())) {
+				isAlreadyExsist = true;
+				break;
 			}
 		}
+		if (!(isAlreadyExsist)) {
+			contactList.add(contact);
+			addressBooks.put(bookName, contactList);
+			System.out.println("New Contact Added Sucessfully");
+		} else {
+			System.out.println("Contact already exsist");
+		}
+	}
 
-		//method to search multiple person in city and state
-		public void searchPerson(String searchKey)
-		{
-			for (String bookName : addressBooks.keySet())
-			{
-				LinkedList<Contact> contactList  =  addressBooks.get(bookName);
-				for (Contact contact : contactList) 
-				{
-					if (contact.getCity().equals(searchKey) ||  contact.getState().equals(searchKey) )
-					{
-						System.out.println(contact.getFirstname() + ""+ contact.getLastname());
+	// method to search multiple person in city and state
+	public void searchPerson(String searchKey) {
+		for (String bookName : addressBooks.keySet()) {
+			LinkedList<Contact> contactList = addressBooks.get(bookName);
+			for (Contact contact : contactList) {
+				if (contact.getCity().equals(searchKey) || contact.getState().equals(searchKey)) {
+					System.out.println(contact.getFirstname() + "" + contact.getLastname());
 
-					}
 				}
 			}
 		}
-		// method to view person in addressbook
-		public void viewPerson(String viewKey) 
-		{		
-			for (String bookName : addressBooks.keySet())
-			{
-				LinkedList<Contact> contactList  =  addressBooks.get(bookName);
-				for (Contact contact : contactList) 
-				{
-					if (contact.getCity().equals(viewKey) ||  contact.getState().equals(viewKey) )
-					{
-						System.out.println(contact);
+	}
 
-					}
+	// method to view person in address book
+	public void viewPerson(String viewKey) {
+		for (String bookName : addressBooks.keySet()) {
+			LinkedList<Contact> contactList = addressBooks.get(bookName);
+			for (Contact contact : contactList) {
+				if (contact.getCity().equals(viewKey) || contact.getState().equals(viewKey)) {
+					System.out.println(contact);
 				}
 			}
-			
 		}
+	}
 }
