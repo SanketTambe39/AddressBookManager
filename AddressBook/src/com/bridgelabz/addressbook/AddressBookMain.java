@@ -19,8 +19,9 @@ public class AddressBookMain {
 					+ "\n 5 Search "
 					+ "\n 6 View Person from same state or city"
 					+ "\n 7 No of person from same state or city "
-					+ "\\n 8 Sort contact with basic name"
-					+ "\n 9 Quit ");
+					+ "\n 8 Sort contact with basic name "
+					+ "\n 9 Sort On the basis of city,state or Zip"
+					+ "\n 10 Quit ");
 			int userChoice = scanner.nextInt();
 			switch (userChoice) 
 			{
@@ -75,6 +76,12 @@ public class AddressBookMain {
 				case 8:
 					contact.sortContacts();
 					break;
+				case 9:
+					System.out.println("How you want to sort\n1 City \n2 State \n3 Zip");
+					int sortByWhich = scanner.nextInt();
+					contact.sortBY(sortByWhich);
+					break;
+
 				default:
 					System.out.println("You just Quit");
 					System.exit(0);
