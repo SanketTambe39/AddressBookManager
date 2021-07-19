@@ -1,5 +1,6 @@
 package com.bridgelabz.addressbook;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -98,9 +99,13 @@ public class AddressBookService {
 	 * Method to Display the Contact Details
 	 */
 	public void displayContacts(LinkedList<Contact> contactList) {
-		for (Contact contact : contactList) {
-			System.out.println(contact);
-		}
+		addressBooks.entrySet().stream()
+		.map(books->books.getKey())
+		.map(bookNames->{
+			System.out.println(bookNames); 
+			return addressBooks.get(bookNames); 
+		})
+		.forEach(contactInBook->System.out.println(contactInBook));
 	}
 
 	public void displayContact() {
@@ -128,13 +133,8 @@ public class AddressBookService {
 
 	// check Duplicate using name
 	private void addContactToExsistingBook(Contact contact, String bookName, LinkedList<Contact> contactList) {
-		boolean isAlreadyExsist = false;
-		for (Contact searchContact : contactList) {
-			if (searchContact.getFirstname().equals(contact.getFirstname())) {
-				isAlreadyExsist = true;
-				break;
-			}
-		}
+		boolean isAlreadyExsist = contactList.stream()
+				.anyMatch(contactsInlist->contactsInlist.getFirstname()==contact.getFirstname());
 		if (!(isAlreadyExsist)) {
 			contactList.add(contact);
 			addressBooks.put(bookName, contactList);
@@ -149,12 +149,9 @@ public class AddressBookService {
 		int count = 0;
 		for (String bookName : addressBooks.keySet()) {
 			LinkedList<Contact> contactList = addressBooks.get(bookName);
-			for (Contact contact : contactList) {
-				if (contact.getCity().equals(searchKey) || contact.getState().equals(searchKey)) {
-					System.out.println(contact.getFirstname() + "" + contact.getLastname());
-					count++;
-				}
-			}
+			contactList.stream()
+			.filter(n->n.getState()==searchKey || n.getCity() == searchKey)
+			.forEach(n->System.out.println(n.getFirstname()+" "+n.getLastname()));
 		}
 		return count; 
 	}
@@ -163,11 +160,18 @@ public class AddressBookService {
 	public void viewPerson(String viewKey) {
 		for (String bookName : addressBooks.keySet()) {
 			LinkedList<Contact> contactList = addressBooks.get(bookName);
-			for (Contact contact : contactList) {
-				if (contact.getCity().equals(viewKey) || contact.getState().equals(viewKey)) {
-					System.out.println(contact);
-				}
-			}
+			contactList.stream()
+			.filter(contact->contact.getState()==viewKey || contact.getCity() == viewKey)
+			.forEach(contact->System.out.println(contact));
 		}
 	}
+	//method to sort contacts based on person name
+		public void sortContacts()
+		{
+			for (String bookName : addressBooks.keySet())
+			{
+				LinkedList<Contact> contatct = addressBooks.get(bookName);
+			 	contatct.stream().sorted(Comparator.comparing(Contact::getFirstname)).forEach(n->System.out.println(n));
+			}
+		}
 }

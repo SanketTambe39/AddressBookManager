@@ -19,7 +19,8 @@ public class AddressBookMain {
 					+ "\n 5 Search "
 					+ "\n 6 View Person from same state or city"
 					+ "\n 7 No of person from same state or city "
-					+ "\n 8 Quit ");
+					+ "\\n 8 Sort contact with basic name"
+					+ "\n 9 Quit ");
 			int userChoice = scanner.nextInt();
 			switch (userChoice) 
 			{
@@ -70,6 +71,9 @@ public class AddressBookMain {
 					String searchKeyForCount = scanner.next();
 					int count = (int)contact.searchPerson(searchKeyForCount);
 					System.out.println("Total Contacts are : "+count+ " in "+ searchKeyForCount);
+					break;
+				case 8:
+					contact.sortContacts();
 					break;
 				default:
 					System.out.println("You just Quit");
