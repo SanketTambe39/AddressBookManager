@@ -51,11 +51,11 @@ public class AddressBookService {
 			addressBooks.put(bookName, allContacts);
 			System.out.println("New book created and Contact Added Sucessfully");
 		}
-
+		addAddressBookToFile(contact.getFirstname(),contact.getLastname(),contact.getCity(),contact.getState(), contact.getPhonenumber(),contact.getZipcode());
 		return contact;
 	}
 	
-	 private void addAddressBookToFile(String firstName, String lastName, String address, String city, String state, String phoneNumber, String zip) {
+	 public void addAddressBookToFile(String firstName, String lastName, String city, String state, String phoneNumber, int zip) {
 	        System.out.println("Enter address book name: ");
 	        String addressBookName = scanner.nextLine();
 	        File contactsFile = new File("C:\\Users\\Shravya\\Desktop\\" + addressBookName + ".txt");
@@ -73,11 +73,10 @@ public class AddressBookService {
 	                bw.write("Contact:" +
 	                        "\n1.First name: " + firstName +
 	                        "\n2.Last name: " + lastName +
-	                        "\n3.Address: " + address +
-	                        "\n4.City: " + city +
-	                        "\n5.State: " + state +
-	                        "\n6.Phone number: " + phoneNumber +
-	                        "\n7.Zip: " + zip + "\n");
+	                        "\n3.City: " + city +
+	                        "\n4.State: " + state +
+	                        "\n5.Phone number: " + phoneNumber +
+	                        "\n6.Zip: " + zip + "\n");
 	                bw.close();
 	            } catch (IOException e) {
 	                e.printStackTrace();
